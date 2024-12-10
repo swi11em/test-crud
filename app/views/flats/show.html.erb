@@ -1,0 +1,57 @@
+<div class="map" style="background-image: url('<%= @flat.imag_url %>'); height: 400px; background-size: cover;"></div>
+<div class="container margin-top-negative p-5">
+  <div class="row">
+    <div class="col-8">
+      <div class="flat-show-card">
+        <h1><%= @flat.title %></h1>
+        <p class="flat-show-address">lille</p>
+      </div>
+      <div class="flat-show-card">
+        <h3>A bit more about this flat...</h3>
+        <p><%= @flat.description %></p>
+        <div class="map" style="background-image: url('https://maps.googleapis.com/maps/api/staticmap?center=lille&amp;zoom=13&amp;scale=2&amp;size=1000x1000&amp;maptype=roadmap&amp;markers=color:red%7Clille&amp;key=AIzaSyAPpx0wk4d-AQ8bhe8-a-ihC7NXLoPElhg')"></div>
+      </div>
+    </div>
+
+
+  <div class="col-4">
+   <div class="flat-show-card">
+  <h5>Book this place!</h5>
+  <%= form_with model: @booking, url: flat_bookings_path(@flat), local: true do |f| %>
+    <div class="input-group flex">
+      <span class="input-group-text" id="start-date-label">From:</span>
+      <%= f.date_field :start_date, class: "form-control", aria: { label: "start-date", describedby: "start-date-label" } %>
+    </div>
+
+    <div class="input-group mt-2 flex">
+      <span class="input-group-text" id="end-date-label">To:</span>
+      <%= f.date_field :end_date, class: "form-control", aria: { label: "end-date", describedby: "end-date-label" } %>
+    </div>
+
+    <%= f.hidden_field :flat_id, value: @flat.id %>
+
+    <%= f.submit "Book", class: "btn btn-success mt-2", style: "width: 100%" %>
+  <% end %>
+</div>
+
+
+    <div class="flat-show-card">
+      <h3>Details</h3>
+      <div class="flex">
+        <div class="flex">4</div>
+        <div class="flex ms-3"><%= @flat.price %></div>
+      </div>
+    </div>
+
+    <div class="flat-show-card">
+      <div class="flex-align flex">
+        <h6 class="no-mb">Share</h6>
+        <div class="flex">
+          <i class="fa-brands fa-facebook-square me-2"></i>
+          <i class="fa-brands fa-twitter-square me-2"></i>
+          <i class="fa-brands fa-pinterest-square me-2"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

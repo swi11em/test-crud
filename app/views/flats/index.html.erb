@@ -1,0 +1,41 @@
+<div class="container mt-3 p-5">
+    <div class="row">
+        <div class="col-12">
+            <h1>All our Flats</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <p>All <%= @flats.count %> flats.</p>
+        </div>
+    </div>
+    <div class="row">
+    <% @flats.each do |flat| %>
+        <div class="col-md-4">
+            <div class=" card flat-card">
+                <img class="card-img-top" src= <%= flat.imag_url %>>
+                <div class="flat-card-content px-4">
+                    <div class="card-title">
+                        <h4 class="py-2"><%= flat.title %></h4>
+                    </div>
+                    <p>lille</p>
+                    <div class="d-flex">
+                        <div class="flex align-items-center">
+                            <i class="fa-solid fa-people-line"></i>
+                            <span>4</span>
+                        </div>
+                        <div class="flex align-items-center ms-3">
+                            <i class="fa-solid fa-euro-sign"></i>
+                            <span><%= flat.price%></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flat-card-actions d-flex justify-content-between p-4">
+                    <%= link_to "More info", flat_path(flat) %>
+                </div>
+            </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
