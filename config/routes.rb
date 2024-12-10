@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  root to: "flats#index"
   # Nested resources: bookings nested within flats for specific actions
   resources :flats do
     resources :bookings, only: [:create, :destroy]
